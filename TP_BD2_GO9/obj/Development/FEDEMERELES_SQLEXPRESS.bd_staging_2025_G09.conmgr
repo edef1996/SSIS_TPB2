@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="FEDEMERELES_SQLEXPRESS.bd_staging_2025_G09"
+  DTS:DTSID="{AE8292EB-A131-4661-9DD3-1F1FCF3BAD7B}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=FEDEMERELES\SQLEXPRESS;Initial Catalog=bd_staging_2025_G09;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-TP_BD2_GO9-{AE8292EB-A131-4661-9DD3-1F1FCF3BAD7B}FEDEMERELES\SQLEXPRESS.bd_staging_2025_G09;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

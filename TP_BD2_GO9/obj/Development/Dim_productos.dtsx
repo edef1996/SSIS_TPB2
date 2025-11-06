@@ -1,0 +1,1383 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2025 1:42:52 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="FEDEMERELES"
+  DTS:CreatorName="FEDEMERELES\Merel"
+  DTS:DTSID="{C49F473D-C235-466A-BD5C-6BC65B2EF4B5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{B5F37FEA-CF16-41F1-B01C-804DFFA6D836}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Conexion Txt Productos]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{1C281884-2F62-4F97-B17D-C59F9DC8B7DC}"
+      DTS:ObjectName="Conexion Txt Productos">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3082"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Merel\source\repos\TP_BD2_GO9\Fuentes de datos TP\Products.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="idProducto"
+              DTS:DTSID="{9C57E3D6-5A1D-406B-A8BF-487852312AA5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="descripcionProducto"
+              DTS:DTSID="{676EA7FB-6B61-4D6F-A2AF-52FC275FEE20}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="presentacionProducto"
+              DTS:DTSID="{C7ADC32F-C3EA-4A37-8433-85FB3C3B984A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga int_productos_G09"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{12A51EB0-2E1B-4A10-9A37-521E93433A62}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga int_productos_G09"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga int_productos_G09\Columna derivada capacidadProducto"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Columna derivada capacidadProducto"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Inputs[Entrada de columna derivada].Columns[presentacionProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="presentacionProducto"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[presentacionProducto]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Outputs[Salida de columna derivada].Columns[capacidadProducto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Outputs[Salida de columna derivada].Columns[capacidadProducto]"
+                      name="capacidadProducto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_I4)[SUBSTRING](#{Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[presentacionProducto]},1,[FINDSTRING](#{Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[presentacionProducto]}," ",1) - 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)SUBSTRING(presentacionProducto,1,FINDSTRING(presentacionProducto," ",1) - 1)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga int_productos_G09\Columna derivada idProducto"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Columna derivada idProducto"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga int_productos_G09\Columna derivada idProducto.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada idProducto.Inputs[Entrada de columna derivada].Columns[idProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="idProducto"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[idProducto]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_I4)[LTRIM]([RTRIM](#{Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[idProducto]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)LTRIM(RTRIM(idProducto))</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga int_productos_G09\Columna derivada idProducto.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Carga int_productos_G09\Columna derivada idProducto.Inputs[Entrada de columna derivada]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga int_productos_G09\Columna derivada idProducto.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Carga int_productos_G09\Columna derivada idProducto.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada idProducto.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga int_productos_G09\Columna derivada idProducto.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada idProducto.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga int_productos_G09\Columna derivada idProducto.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga int_productos_G09\Columna derivada tipoProducto"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Columna derivada tipoProducto"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Inputs[Entrada de columna derivada].Columns[descripcionProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="descripcionProducto"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[descripcionProducto]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Outputs[Salida de columna derivada].Columns[tipoProducto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Outputs[Salida de columna derivada].Columns[tipoProducto]"
+                      name="tipoProducto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[REVERSE]([SUBSTRING]([REVERSE]([RTRIM](#{Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[descripcionProducto]})),1,[FINDSTRING]([REVERSE]([RTRIM](#{Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[descripcionProducto]}))," ",1) &gt; 0 ? [FINDSTRING]([REVERSE]([RTRIM](#{Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[descripcionProducto]}))," ",1) - 1 : [LEN]([REVERSE]([RTRIM](#{Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[descripcionProducto]})))))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REVERSE(SUBSTRING(REVERSE(RTRIM(descripcionProducto)),1,FINDSTRING(REVERSE(RTRIM(descripcionProducto))," ",1) &gt; 0 ? FINDSTRING(REVERSE(RTRIM(descripcionProducto))," ",1) - 1 : LEN(REVERSE(RTRIM(descripcionProducto)))))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga int_productos_G09\int_productos_G09"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="int_productos_G09"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[int_productos_G09]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga int_productos_G09\int_productos_G09.Connections[OleDbConnection]"
+                  connectionManagerID="{A571DC5A-9D42-4E60-B9AC-C0D254FF13A8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[FEDEMERELES_SQLEXPRESS.bd_intermedia_2025_G09]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].Columns[idProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="idProducto"
+                      externalMetadataColumnId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[idProducto]"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[idProducto]" />
+                    <inputColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].Columns[descripcionProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="descripcionProducto"
+                      externalMetadataColumnId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcionProducto]"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[descripcionProducto]" />
+                    <inputColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].Columns[presentacionProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="presentacionProducto"
+                      externalMetadataColumnId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[presentacionProducto]"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[presentacionProducto]" />
+                    <inputColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].Columns[capacidadProducto]"
+                      cachedDataType="i4"
+                      cachedName="capacidadProducto"
+                      externalMetadataColumnId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[capacidadProducto]"
+                      lineageId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Outputs[Salida de columna derivada].Columns[capacidadProducto]" />
+                    <inputColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].Columns[tipoProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="tipoProducto"
+                      externalMetadataColumnId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipoProducto]"
+                      lineageId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Outputs[Salida de columna derivada].Columns[tipoProducto]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[idProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="idProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="descripcionProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[presentacionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="presentacionProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[capacidadProducto]"
+                      dataType="i4"
+                      name="capacidadProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipoProducto]"
+                      dataType="wstr"
+                      length="50"
+                      name="tipoProducto" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga int_productos_G09\int_productos_G09.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga int_productos_G09\int_productos_G09.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\int_productos_G09.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga int_productos_G09\int_productos_G09.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga int_productos_G09\stg_productos_G09"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="stg_productos_G09"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[stg_productos_G09]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga int_productos_G09\stg_productos_G09.Connections[OleDbConnection]"
+                  connectionManagerID="{AE8292EB-A131-4661-9DD3-1F1FCF3BAD7B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[FEDEMERELES_SQLEXPRESS.bd_staging_2025_G09]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[idProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].ExternalColumns[idProducto]"
+                      length="50"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[idProducto]"
+                      name="idProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[descripcionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcionProducto]"
+                      length="50"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[descripcionProducto]"
+                      name="descripcionProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[presentacionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].ExternalColumns[presentacionProducto]"
+                      length="50"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].Columns[presentacionProducto]"
+                      name="presentacionProducto"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].ExternalColumns[idProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="idProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="descripcionProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB].ExternalColumns[presentacionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="presentacionProducto" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB].Columns[idProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB].Columns[idProducto]"
+                      name="idProducto" />
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB].Columns[descripcionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB].Columns[descripcionProducto]"
+                      name="descripcionProducto" />
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB].Columns[presentacionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB].Columns[presentacionProducto]"
+                      name="presentacionProducto" />
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga int_productos_G09.Paths[Salida de columna derivada]"
+              endId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Inputs[Entrada de columna derivada]"
+              name="Salida de columna derivada"
+              startId="Package\Carga int_productos_G09\Columna derivada idProducto.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Carga int_productos_G09.Paths[Salida de columna derivada1]"
+              endId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Inputs[Entrada de columna derivada]"
+              name="Salida de columna derivada"
+              startId="Package\Carga int_productos_G09\Columna derivada capacidadProducto.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Carga int_productos_G09.Paths[Salida de columna derivada2]"
+              endId="Package\Carga int_productos_G09\int_productos_G09.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\Carga int_productos_G09\Columna derivada tipoProducto.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Carga int_productos_G09.Paths[Salida de origen de OLE DB]"
+              endId="Package\Carga int_productos_G09\Columna derivada idProducto.Inputs[Entrada de columna derivada]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Carga int_productos_G09\stg_productos_G09.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga Txt Productos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Carga del archivo txt de productos"
+      DTS:DTSID="{C88DE5E6-9443-4C61-802D-99FA07E56CC3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Txt Productos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Txt Productos\Origen Txt Productos"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Origen de archivo plano;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Conexion al archivo .txt de productos."
+              localeId="3082"
+              name="Origen Txt Productos"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si las columnas de longitud cero se tratan como NULL."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre de una columna de salida que contiene el nombre de archivo. Si no se especifica ningún nombre, no se genera ninguna columna de salida con el nombre de archivo."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Txt Productos\Origen Txt Productos.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Conexion Txt Productos]"
+                  connectionManagerRefId="Package.ConnectionManagers[Conexion Txt Productos]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano]"
+                  name="Salida de origen de archivo plano">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].Columns[idProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].ExternalColumns[idProducto]"
+                      length="50"
+                      lineageId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].Columns[idProducto]"
+                      name="idProducto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].Columns[descripcionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].ExternalColumns[descripcionProducto]"
+                      length="50"
+                      lineageId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].Columns[descripcionProducto]"
+                      name="descripcionProducto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].Columns[presentacionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].ExternalColumns[presentacionProducto]"
+                      length="50"
+                      lineageId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].Columns[presentacionProducto]"
+                      name="presentacionProducto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].ExternalColumns[idProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="idProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].ExternalColumns[descripcionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="descripcionProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].ExternalColumns[presentacionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="presentacionProducto" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de error de origen de archivo plano]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de archivo plano">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Columna de salida de error de origen de archivo plano"
+                      lineageId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                      name="Columna de salida de error de origen de archivo plano" />
+                    <outputColumn
+                      refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Txt Productos\stg_productos_G09"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Carga de la tabla de productos en el staging asignado."
+              name="stg_productos_G09"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[stg_productos_G09]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Txt Productos\stg_productos_G09.Connections[OleDbConnection]"
+                  connectionManagerID="{AE8292EB-A131-4661-9DD3-1F1FCF3BAD7B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[FEDEMERELES_SQLEXPRESS.bd_staging_2025_G09]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB].Columns[idProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="idProducto"
+                      externalMetadataColumnId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[idProducto]"
+                      lineageId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].Columns[idProducto]" />
+                    <inputColumn
+                      refId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB].Columns[descripcionProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="descripcionProducto"
+                      externalMetadataColumnId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcionProducto]"
+                      lineageId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].Columns[descripcionProducto]" />
+                    <inputColumn
+                      refId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB].Columns[presentacionProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="presentacionProducto"
+                      externalMetadataColumnId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[presentacionProducto]"
+                      lineageId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano].Columns[presentacionProducto]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[idProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="idProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="descripcionProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB].ExternalColumns[presentacionProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="presentacionProducto" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Txt Productos\stg_productos_G09.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Txt Productos\stg_productos_G09.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Txt Productos\stg_productos_G09.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Txt Productos\stg_productos_G09.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Txt Productos\stg_productos_G09.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Txt Productos.Paths[Salida de origen de archivo plano]"
+              endId="Package\Carga Txt Productos\stg_productos_G09.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de archivo plano"
+              startId="Package\Carga Txt Productos\Origen Txt Productos.Outputs[Salida de origen de archivo plano]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar Tabla int_productos_G09"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{5b3b87c9-df7b-482d-8149-2d23f9d417d0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar Tabla int_productos_G09"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A571DC5A-9D42-4E60-B9AC-C0D254FF13A8}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE int_productos_G09" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar Tabla stg_productos_G09"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{EA7F09A5-B081-494A-88DD-E561EB741964}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar Tabla stg_productos_G09"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AE8292EB-A131-4661-9DD3-1F1FCF3BAD7B}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE stg_productos_G09" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{8071B3C2-AB81-4E5C-A7BB-16AB57E03B44}"
+      DTS:From="Package\Truncar Tabla stg_productos_G09"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Carga Txt Productos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D525C228-C86A-4158-91CF-3EEEDD714FE8}"
+      DTS:From="Package\Carga Txt Productos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Truncar Tabla int_productos_G09" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{93CF265A-E45C-43E4-BA02-11B0B90CB906}"
+      DTS:From="Package\Truncar Tabla int_productos_G09"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\Carga int_productos_G09" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Carga int_productos_G09"
+          TopLeft="581.410224643402,337.199997719129" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Carga Txt Productos"
+          TopLeft="588.333301188218,153.466665599479" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Truncar Tabla int_productos_G09"
+          TopLeft="572.884584083581,250.266664926343" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Truncar Tabla stg_productos_G09"
+          TopLeft="579.038429901196,68.0666661933396" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="675.285865544707,109.66666619334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.799999406139"
+              Start="0,0"
+              End="0,36.299999406139">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.299999406139" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="672.208942635899,195.066665599479">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.199999326864"
+              Start="0,0"
+              End="0,47.699999326864">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.699999326864" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="668.747404363491,291.866664926343">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.3333327927859"
+              Start="0,0"
+              End="0,37.8333327927859">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.8333327927859" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga int_productos_G09">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\Carga int_productos_G09\int_productos_G09"
+          TopLeft="829.166621362999,477.533330012626" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Carga int_productos_G09\Columna derivada idProducto"
+          TopLeft="552.499969812732,218.399998481274" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Carga int_productos_G09\stg_productos_G09"
+          TopLeft="549.999969949326,135.199999059836" />
+        <NodeLayout
+          Size="169.6,42.4"
+          Id="Package\Carga int_productos_G09\Columna derivada tipoProducto"
+          TopLeft="734.16662655357,380.466664020949" />
+        <NodeLayout
+          Size="254.4,41.6"
+          Id="Package\Carga int_productos_G09\Columna derivada capacidadProducto"
+          TopLeft="551.66663652493,307.999998011192" />
+        <EdgeLayout
+          Id="Package\Carga int_productos_G09.Paths[Salida de columna derivada1]"
+          TopLeft="678.86663652493,349.599998011192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="140.09999002864,30.866666009757"
+              Start="0,0"
+              End="140.09999002864,23.366666009757">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.4333330048785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.4333330048785"
+                    Point2="0,15.4333330048785"
+                    Point3="4,15.4333330048785" />
+                  <mssgle:LineSegment
+                    End="136.09999002864,15.4333330048785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="136.09999002864,15.4333330048785"
+                    Point2="140.09999002864,15.4333330048785"
+                    Point3="140.09999002864,19.4333330048785" />
+                  <mssgle:LineSegment
+                    End="140.09999002864,23.366666009757" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga int_productos_G09.Paths[Salida de columna derivada]"
+          TopLeft="633.699969812732,259.999998481274">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.166666712198,47.999999529918"
+              Start="0,0"
+              End="45.166666712198,40.499999529918">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.999999764959" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.999999764959"
+                    Point2="0,23.999999764959"
+                    Point3="4,23.999999764959" />
+                  <mssgle:LineSegment
+                    End="41.166666712198,23.999999764959" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.166666712198,23.999999764959"
+                    Point2="45.166666712198,23.999999764959"
+                    Point3="45.166666712198,27.999999764959" />
+                  <mssgle:LineSegment
+                    End="45.166666712198,40.499999529918" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga int_productos_G09.Paths[Salida de origen de OLE DB]"
+          TopLeft="634.049969881029,176.799999059836">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.599999421438"
+              Start="0,0"
+              End="0,34.099999421438">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.099999421438" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga int_productos_G09.Paths[Salida de columna derivada2]"
+          TopLeft="818.96662655357,422.866664020949">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="93.3999948094295,54.6666659916773"
+              Start="0,0"
+              End="93.3999948094295,47.1666659916773">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.3333329958386" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.3333329958386"
+                    Point2="0,27.3333329958386"
+                    Point3="4,27.3333329958386" />
+                  <mssgle:LineSegment
+                    End="89.3999948094295,27.3333329958386" />
+                  <mssgle:CubicBezierSegment
+                    Point1="89.3999948094295,27.3333329958386"
+                    Point2="93.3999948094295,27.3333329958386"
+                    Point3="93.3999948094295,31.3333329958386" />
+                  <mssgle:LineSegment
+                    End="93.3999948094295,47.1666659916773" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga int_productos_G09\int_productos_G09">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga int_productos_G09\stg_productos_G09">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Carga Txt Productos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="211.2,64"
+          Id="Package\Carga Txt Productos\stg_productos_G09"
+          TopLeft="248.7,373.43333333936" />
+        <NodeLayout
+          Size="220.8,52.8"
+          Id="Package\Carga Txt Productos\Origen Txt Productos"
+          TopLeft="236.333320721156,164.099998897115" />
+        <EdgeLayout
+          Id="Package\Carga Txt Productos.Paths[Salida de origen de archivo plano]"
+          TopLeft="350.516660360578,216.899998897115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,156.533334442245"
+              Start="0,0"
+              End="0,149.033334442245">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,149.033334442245" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Txt Productos\stg_productos_G09">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
